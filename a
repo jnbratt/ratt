@@ -1,0 +1,182 @@
+## Test Code for project, starting with main Bot function
+
+def cs_service_bot():
+    print("Hello! Welcome to the DNS Cable Company's Service Portal. Are you a new or existing customer? \n[1] New Customer \n[2] Existing Customer")
+    print('\n')
+    response_one = input("Please enter the number corresponding to your choice: ")
+    if response_one == "1":
+        new_customer()
+    elif response_one == "2":
+        existing_customer()
+    else:
+        print("Sorry, we didn't understand your selection.")
+        cs_service_bot()
+        
+## Existing customer function        
+def existing_customer():
+    print("What kind of support do you need? \n[1] Television Support \n[2] Internet Support \n[3] Speak to a support representative. \n[4] Back to Main Menu")
+    print('\n')
+    support = input("Please make a selection: ")
+    if support == "1":
+        television_support()
+    elif support == "2":
+        internet_support()
+    elif support == "3":
+        live_rep("support")
+    elif support == "4":
+        cs_service_bot()
+    else: 
+        print("Sorry, we didn't understand your selection.")
+        existing_customer()
+
+#New Customer function
+def new_customer():
+    print("We're excited to have you join the DNS family, how can we help you?\n[1] Sign up for service.\n[2] Schedule a home visit.\n[3] Speak to a sales representative.\n[4] Back to Main Menu")
+    print('\n')
+    problem = input("Please make a selection: ")
+    if problem == "1":
+        sign_up()
+    elif problem == "2":
+        home_visit()
+    elif problem == "3":
+        live_rep("sales")
+    elif problem == "4":
+        cs_service_bot()
+    else:
+        print("Sorry, we didn't understand your selection.")
+        new_customer()
+        
+#TV Support function
+def television_support():
+    print("What is the nature of your problem?  [1] I can't access certain channels.\n[2] My picture is blurry.\n[3] I keep losing service.\n[4] Other Issues.\n[5] Back to Main Menu")
+    print('\n')
+    television = input("Please make a selection: ")
+    if television == "1":
+        print("Please check the channel lists at DefinitelyNotSinister.com./nIf the channel you cannot access is there, please contact a live representative.")
+        did_that_help()
+    elif television == "2":
+        print("Try adjusting the antenna above your television set.")
+        did_that_help()
+    elif television == "3":
+        print("Is it raining outside? If so, wait until it is not raining an then try again.")
+        did_that_help()
+    elif television == "4":
+        live_rep("support")
+    elif television == "5":
+        cs_servive_bot()
+    else:
+        print("Sorry, we didn't understand your selection.")
+        television_support()
+        
+## Internet Support function 
+## You still need to add a print statement abou their Internet issue.
+def internet_support():
+    print("What is the nature of your problem?  \n[1] I can't connect to the internet.\n[2] My connection is very slow.\n[3] I can't access certain sites.\n[4] Other issues.\n[5] Back to Main Menu")
+    print('\n')
+    internet = input("Please make a selection: ")
+    if internet == "1":
+        print("Unplug your router, then plug it back in, then give it a good whack, like the Fonz.")
+        did_that_help()
+    elif internet == "2":
+        print("Make sure that all cell phones and other peoples computers are not connected to the internet, \nso that you can have all the bandwidth.")
+        did_that_help()
+    elif internet =="3":
+        print("Move to a different region or install a VPN. Some areas block certain sites.")
+        did_that_help()
+    elif internet == "4":
+        live_rep("support")
+    elif internet == "5":
+        cs_service_bot()
+    else:
+        print("Sorry, we didn't understand your selection.")
+        internet_support()
+        
+# Did that Help function
+def did_that_help():
+    print("Did that solution solve your problem? \n[1] Yes\n[2] No \n[3] Back to Main Menu")
+    print('\n')
+    help = input("Please make a selection: ")
+    if help == "1":
+        print("Wonderful. Thank you and have a good day.")
+    elif help == "2":
+        print("We're sorry. Would you rather talk with a live representative or schedule a home visit? \n[1] Talk to a live representative.\n[2] Schedule a Home Visit.\n[3] Back to Main Menu")
+        visit = input("Please make a selection: ")
+        if input == "1":
+            live_rep("support")
+        elif input == "2":
+            home_visit("support")
+        elif input == "3":
+            cs_service_bot()
+        else:
+            print("Sorry, make a valid selection.")
+            did_that_help()
+    elif help == "3":
+        cs_service_bot()
+    else:
+        print("Sorry, we didn't understand your selection.")
+        did_that_help()
+        
+# Sign Up function for a new customer
+def sign_up():
+    print("Great choice, friend! We're excited to have you join the DNS family! Please select the package you are interested in signing up for.\n[1] Bundle Deal (Internet + Cable)\n[2] Internet\n[3] Cable\n[4] Back to Main Menu")
+    print('\n')
+    sign = input("Please make a selection: ")
+    if sign == "1":
+        print("You've selected the Bundle Package! Please schedule a home visit and our technician will come and set up your new service.")
+        home_visit("new install")
+    elif sign == "2":
+        print("You've selected the Internet Only Package! Please schedule a home visit and our technician will come and set up your new service.")
+        home_visit("new install")
+    elif sign == "3":
+        print("You've selected the Cable Only Package! Please schedule a home visit and our technician will come and set up your new service.")
+        home_visit("new install")
+    elif sign == "4":
+        cs_service_bot()
+    else:
+        print("Sorry, we didn't understand your selection.")
+        sign_up()
+        
+# Home visit function
+def home_visit(purpose="none"):
+    if purpose == "none":
+        print("What is the purpose of the home visit? \n[1] New service installation.\n[2] Exisitng service repair.\n[3] Location scouting for unserviced region.\n[4] Back to Main Menu")
+        print('\n')
+        visit = input("Please make a selection")
+        if visit == "1":
+            home_visit("new install")
+        elif visit == "2":
+            home_visit("support")
+        elif visit == "3":
+            home_visit("scout")
+        elif visit == "4":
+            cs_service_bot()
+        else:
+            print("Sorry, we didn't understand your selection.")
+            home_visit()
+    if purpose == "new install":
+        print("Please enter a date below when you are available for a technician to come to your home and do the install?")
+        visit_date = input("Enter Date as xx/xx/xxxx: ")
+        print("Wonderful! A technical will come visit you on " + visit_date + ". Please be available between the hours of 1:00 am and 11:00 pm.")
+        print('\n')
+        return visit_date
+    if purpose == "support":
+        print("Please enter a date below when you are available for a technician to come to your home and take a look at the problem?")
+        visit_date = input("Enter Date as xx/xx/xxxx: ")
+        print("Wonderful! A technical will come visit you on " + visit_date + ". Please be available between the hours of 1:00 am and 11:00 pm.")
+        print('\n')
+        return visit_date
+    if purpose == "scout":
+        print("Please enter a date below when you are available for a technician to come to your home and scout your regions for expansion?")
+        visit_date = input("Enter Date as xx/xx/xxxx: ")
+        print("Wonderful! A technical will come visit you on " + visit_date + ". Please be available between the hours of 1:00 am and 11:00 pm.")
+        print('\n')
+        return visit_date
+        
+# final function
+def live_rep(purpose):
+    if purpose == "sales":
+        print("Please hold while we connect you with a live sales representative. \nThe wait time will be between two minutes and six hours. We thank you for your patience.")
+    elif purpose == "support":
+        print("Please hold while we connect you with a live support representative. \n The wait time will be between two minutes and six hours. We thank you for your patience.")
+    else:
+        cs_service_bot()
